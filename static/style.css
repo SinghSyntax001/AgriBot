@@ -1,0 +1,361 @@
+/* --- Modern Theme Variables --- */
+:root {
+    --primary-color: #06b6d4;
+    --secondary-color: #0f172a;
+    --accent-color: #14b8a6;
+    --light-bg: #f9fafb;
+    --dark-text: #1e293b;
+    --light-text: #ffffff;
+    --border-color: #e2e8f0;
+    --message-user-bg: #e0f7fa;
+    --message-bot-bg: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.2);
+    --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Global Reset --- */
+body {
+    font-family: 'Inter', 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #a5f3fc, #f0fdfa);
+    margin: 0;
+    padding: 0;
+    color: var(--dark-text);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- 1. Auth Overlay --- */
+#auth-overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.8), rgba(45, 212, 191, 0.8));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+}
+
+.auth-container {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+    padding: 2.5rem;
+    width: 90%;
+    max-width: 400px;
+    color: white;
+    backdrop-filter: blur(15px);
+    text-align: center;
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.auth-container h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.auth-container form input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--dark-text);
+    font-size: 1rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.auth-container form input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--accent-color);
+}
+
+.auth-container form button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: var(--accent-color);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.auth-container form button:hover {
+    background: #0d9488;
+    transform: scale(1.03);
+}
+
+.auth-container p {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.auth-container p a {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#auth-error {
+    color: #ffe4e6;
+    margin-top: 1rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- 2. App Layout --- */
+#app-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+header {
+    background: linear-gradient(90deg, #0ea5e9, #14b8a6);
+    color: var(--light-text);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-soft);
+}
+
+header h1 {
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.header-controls button {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-left: 1rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.header-controls button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#logout-button {
+    background: rgba(239, 68, 68, 0.9);
+}
+
+/* --- 3. Layout Sections --- */
+.main-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* --- 4. Chat History --- */
+#history-panel {
+    width: 280px;
+    background: rgba(255, 255, 255, 0.7);
+    border-right: 1px solid var(--border-color);
+    padding: 1.5rem;
+    overflow-y: auto;
+    backdrop-filter: blur(10px);
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.05);
+}
+
+#history-panel h3 {
+    margin-top: 0;
+    font-weight: 600;
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
+
+.history-item {
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.history-item:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.history-item.active {
+    background: var(--accent-color);
+    color: white;
+    font-weight: 600;
+}
+
+/* --- 5. Chat Area --- */
+.chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--light-bg);
+    position: relative;
+}
+
+#chat-box {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    scroll-behavior: smooth;
+}
+
+.message {
+    padding: 12px 18px;
+    border-radius: 18px;
+    max-width: 70%;
+    line-height: 1.5;
+    animation: fadeMessage 0.3s ease;
+    box-shadow: var(--shadow-soft);
+}
+
+@keyframes fadeMessage {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.message.user {
+    background: var(--primary-color);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 6px;
+}
+
+.message.bot {
+    background: var(--message-bot-bg);
+    border: 1px solid var(--border-color);
+    align-self: flex-start;
+    border-bottom-left-radius: 6px;
+}
+
+/* --- Typing Animation --- */
+.message.bot.typing {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    background: #94a3b8;
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+    0%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-6px); }
+}
+
+/* --- 6. Input Area --- */
+.input-area {
+    display: flex;
+    padding: 1rem 1.5rem;
+    background: #fff;
+    border-top: 1px solid var(--border-color);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+}
+
+#user-input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#user-input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.2);
+}
+
+#send-button {
+    background: var(--accent-color);
+    border: none;
+    color: var(--light-text);
+    padding: 12px 20px;
+    margin-left: 1rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+#send-button:hover {
+    background: #0d9488;
+    transform: scale(1.05);
+}
+
+/* --- Custom Scrollbar --- */
+#chat-box::-webkit-scrollbar,
+#history-panel::-webkit-scrollbar {
+    width: 8px;
+}
+#chat-box::-webkit-scrollbar-thumb,
+#history-panel::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+#chat-box::-webkit-scrollbar-track,
+#history-panel::-webkit-scrollbar-track {
+    background: transparent;
+}
+.message.bot p {
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+.message.bot strong,
+.message.bot b {
+  color: #2e7d32; /* elegant dark green for emphasis */
+}
+
+.message.bot ul,
+.message.bot ol {
+  margin-left: 20px;
+  padding-left: 10px;
+}
+
+.message.bot li {
+  margin-bottom: 5px;
+}

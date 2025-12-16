@@ -1,0 +1,9 @@
+.env
+/env/
+/_pychache_/
+__pycache__/
+*.pyc
+.DS_Store
+.vscode/
+__init__.py
+
